@@ -1,6 +1,8 @@
-# dxboffplan
+# VueProperties
 
-## Project setup
+## A simple vue pwa project
+
+### Project setup
 ```
 npm install
 ```
