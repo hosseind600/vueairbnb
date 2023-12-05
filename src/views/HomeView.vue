@@ -1,8 +1,8 @@
 <template>
   <Topnav :currentCity="currentCity ? currentCity : 'Any where'" :currentType="currentType ? currentType : 'Any type'"
     :onChooseCity="letChooseCity" :onChooseType="letChooseType" />
-  <Modal v-if="showModal" :onResponse="onResp" :description="modalDescription" :title="modalTitle" :options="options" />
-  <SearchModal/>
+  <!-- <Modal v-if="showModal" :onResponse="onResp" :description="modalDescription" :title="modalTitle" :options="options" /> -->
+  <SearchModal v-if="showModal" :onClose="searchClosed"/>
   <Container>
     <FlexContainer :onLoadMore="loadmorelatest" id="latest" class="flex flex-row flex-wrap">
       <div v-for="item in latest" :key="item.id" class="lg:w-1/4 md:w-1/3 sm:w-1/2 w-full p-1  ">
@@ -145,6 +145,10 @@ import Footer from '../components/Footer.vue'
         this.onTypeChosen(data)
 
       }
+    },
+    searchClosed(){
+      this.showModal = false;
+
     },
     onCityChosen(city: String) {
       this.showModal = false;
